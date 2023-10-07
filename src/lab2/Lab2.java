@@ -1,6 +1,3 @@
-// Algonquin college of applied arts and technology
-package lab2;
-import serverConnection.JavaConnection;
 /**
  * File name: Lab2.java
  * Student Name:Juan Estrada
@@ -10,43 +7,92 @@ import serverConnection.JavaConnection;
  * This is my own original work and is free from Plagiarism.
  * Assignment: Lab 02 
  * Professor: Gustavo Adami 
- * Purpose: Main method using the JavaConnection class
+ * Purpose: Driver class of the application
  * @author by Juan Estrada
  * @version Date: 02/10/2023
 */
+package lab2;
+
+import dto.RecipientDTO;
+import java.util.List;
+import businesslayer.RecipientsBusinessLogic;
+
+/**
+ *
+ * @author juane
+ */
 public class Lab2 {
-    
-     /**
-     *
-     * @param args command line arguments
-     */
     public static void main(String[] args) {
-        JavaConnection jconnect = new JavaConnection();
-    
-        jconnect.connect("src/database.properties");
         
+        RecipientsBusinessLogic logic = new RecipientsBusinessLogic();
+        List<RecipientDTO> recipients = null;
+        RecipientDTO recipient = null; 
         
-        System.out.println("Initial table data: ");
-        jconnect.printTable();
+        // Prints all elements 
+        recipients = logic.getAllRecipients(); 
+        System.out.println("Printing all: ");
         
+        // method to print all records
+        printAll(recipients);
         System.out.println();
-        System.out.println("Column information: ");
-        jconnect.displayColumnInfo();
-        
-        jconnect.insertRecord("INSERT INTO RECIPIENTS "
-                   + "(Name,Year,City,Category) VALUES('Marta', '2023', 'Medellin', 'Education')");
-        
-        
-        System.out.println("Newly added record: ");
-        jconnect.displayLast();
+        // Column information 
+        System.out.println("Displaying column info: ");
+        logic.displayColumnInfo();
         System.out.println();
-        jconnect.deleteRecord("DELETE FROM Recipients ORDER BY AwardID DESC LIMIT 1");
         
-        System.out.println("Final table data: ");
-        jconnect.printTable();
+       // Inserts one element
+       RecipientDTO newRecipient =  new RecipientDTO();
+       newRecipient.setName("Marta");
+       newRecipient.setYear(2023);
+       newRecipient.setCity("Medellin");
+       newRecipient.setCategory("Business");
+       logic.insertRecipient(newRecipient);
+       
+       // Prints the last recipient
+       System.out.println("New Inserted Recipient: ");
+       recipient = logic.getLastRecipient();
+       printLast(recipient);
         
-        jconnect.close();
-        
-    
+        // Delete element 
+        System.out.println();
+        logic.deleteLastRecipient();
+        // prints last element
+        System.out.println("Deleted last Recipient, and printing all: ");
+        recipients = logic.getAllRecipients();
+        printAll(recipients);
     }
+    
+    
+    public static void printAll(List<RecipientDTO> recipients){
+        String finalName = "";
+        for(RecipientDTO reci: recipients){
+           String nameParts[] = reci.getName().split(";");
+           if(nameParts.length == 2){
+                    finalName = nameParts[1] + " " + nameParts[0];
+                } else{
+                    finalName = nameParts[0];
+                }
+           String eachRecipient = String.format("%s. %s, %s, %s, %s ",
+                reci.getAwardID().toString(),
+                finalName,
+                reci.getCity(), 
+                reci.getYear().toString(),
+                reci.getCategory());
+                System.out.println(eachRecipient);
+              
+       }
+    }
+    
+    public static void printLast(RecipientDTO recipient){
+       String lastRecipient = String.format("%s. %s, %s, %s, %s ",
+                recipient.getAwardID().toString(),
+                recipient.getName(),
+                recipient.getCity(),
+                recipient.getYear().toString(),
+                recipient.getCategory());
+                System.out.println(lastRecipient);
+    }
+    
+    
+    
 }
