@@ -1,3 +1,5 @@
+// Algonquin college of applied arts and technology
+
 /**
  * File name: RecipientsDaoImpl.java
  * Student Name:Juan Estrada
@@ -24,7 +26,10 @@ import java.sql.SQLException;
 
 public class RecipientsDaoImpl implements RecipientsDAO {
     
-    
+    /**
+     * Implements the getAllRecipients to get a list of recipients
+     * @return a list of recipients 
+     */
     @Override
     public List<RecipientDTO> getAllRecipients(){
         Connection con = null;
@@ -62,6 +67,11 @@ public class RecipientsDaoImpl implements RecipientsDAO {
         return recipients;
     }
     
+    /**
+     * Implements the getRecipientByAwardID 
+     * @param AwardID the id of the recipient
+     * @return a recipient
+     */
     @Override 
     public RecipientDTO getRecipientByAwardID(Integer AwardID){
         Connection con = null;
@@ -100,7 +110,10 @@ public class RecipientsDaoImpl implements RecipientsDAO {
         }
         return recipient; 
     }
-    
+    /**
+     * Gets the last added recipient
+     * @return the last recipient
+     */
     @Override
     public RecipientDTO getLastRecipient(){
         Connection con = null;
@@ -139,7 +152,10 @@ public class RecipientsDaoImpl implements RecipientsDAO {
     }
     
     
-    
+    /**
+     * Inserts a recipient into the db
+     * @param recipient the recipient object
+     */
     @Override 
     public void insertRecipient(RecipientDTO recipient){
         Connection con = null;
@@ -165,6 +181,10 @@ public class RecipientsDaoImpl implements RecipientsDAO {
         }
     }
        
+    /**
+     * Deletes a recipient from the db 
+     * @param recipient the recipient object
+     */
     @Override 
     public void deleteRecipient(RecipientDTO recipient){
         Connection con = null;
@@ -187,7 +207,9 @@ public class RecipientsDaoImpl implements RecipientsDAO {
             try{ if(con != null){ con.close(); }
             } catch(SQLException ex){System.out.println(ex.getMessage());}
         }}
-    
+    /**
+     * Deletes the last recipient
+     */
     @Override 
     public void deleteLastRecipient(){
         Connection con = null;
@@ -208,7 +230,9 @@ public class RecipientsDaoImpl implements RecipientsDAO {
             try{ if(con != null){ con.close(); }
             } catch(SQLException ex){System.out.println(ex.getMessage());}
         }}
-    
+    /**
+     * Displays information about the columns. 
+     */
     @Override 
     public void displayColumnInfo(){
         Connection con = null;

@@ -1,3 +1,15 @@
+// Algonquin college of applied arts and technology
+package daolayer;
+
+import java.sql.Connection;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
 /**
  * File name: DataSource.java
  * Student Name:Juan Estrada
@@ -11,29 +23,21 @@
  * @author by Juan Estrada
  * @version Date: 02/10/2023
 */
-package daolayer;
-
-import java.sql.Connection;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
-
-/**
- *
- * @author juane
- */
 public class DataSource {
     
+
     private Connection connection = null;
     
+    /**
+     * DataSource constructor
+     */
     public DataSource(){
         
     }
-  
+   /**
+    * Creates the connection to the server by loading the properties. 
+    * @return A connection to the server. 
+    */
     public Connection createConnection(){
         Properties props = new Properties();
         try (InputStream input = Files.newInputStream(Paths.get("src/database.properties"));) {

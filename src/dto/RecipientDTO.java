@@ -1,3 +1,4 @@
+// Algonquin college of applied arts and technology
 package dto;
 
 /**
@@ -20,48 +21,89 @@ public class RecipientDTO {
     private Integer Year; 
     private String City;
     private String Category; 
-    
+    /**
+     * Constructor of the RecipientDTO
+     */
     public RecipientDTO(){
     
     }
-
+    
+    /**
+     * Gets the ID
+     * @return the AwardID
+     */
     public Integer getAwardID(){
         return AwardID; 
     }
 
+    /**
+     * Sets the ID
+     * @param AwardID the new AwardID 
+     */
     public void setAwardID(Integer AwardID) {
         this.AwardID = AwardID;
     }
-   
+    
+    /**
+     * Gets the name
+     * @return the Name
+     */
     public String getName() {
         return Name;
     }
-
+    
+    /**
+     * Sets the name
+     * @param Name the Name
+     */
     public void setName(String Name) {
         this.Name = Name;
     }
     
+    /**
+     * Gets the city
+     * @return the City
+     */
     public String getCity() {
         return City;
     }
-
+    
+    /**
+     * Sets the city 
+     * @param City the City
+     */
     public void setCity(String City) {
         this.City = City;
     }
 
-    
+    /**
+     * Gets the Year
+     * @return the Year
+     */
     public Integer getYear() {
         return Year;
     }
 
+    /**
+     * Sets the Year
+     * @param Year the Year
+     */
     public void setYear(Integer Year) {
         this.Year = Year;
     }
-
+    
+    /**
+     * Gets the Category
+     * @return the Category
+     */
     public String getCategory() {
         return Category;
     }
 
+    /**
+     * Sets the Category
+     * @param Category the category
+     */
     public void setCategory(String Category) {
         this.Category = Category;
     }

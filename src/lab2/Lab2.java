@@ -1,3 +1,9 @@
+// Algonquin college of applied arts and technology
+package lab2;
+
+import dto.RecipientDTO;
+import java.util.List;
+import businesslayer.RecipientsBusinessLogic;
 /**
  * File name: Lab2.java
  * Student Name:Juan Estrada
@@ -11,17 +17,11 @@
  * @author by Juan Estrada
  * @version Date: 02/10/2023
 */
-package lab2;
-
-import dto.RecipientDTO;
-import java.util.List;
-import businesslayer.RecipientsBusinessLogic;
-
-/**
- *
- * @author juane
- */
 public class Lab2 {
+    /**
+     * Main method
+     * @param args arguments 
+     */
     public static void main(String[] args) {
         
         RecipientsBusinessLogic logic = new RecipientsBusinessLogic();
@@ -62,7 +62,10 @@ public class Lab2 {
         printAll(recipients);
     }
     
-    
+    /**
+     * Prints all recipients
+     * @param recipients All recipients. 
+     */
     public static void printAll(List<RecipientDTO> recipients){
         String finalName = "";
         for(RecipientDTO reci: recipients){
@@ -82,7 +85,10 @@ public class Lab2 {
               
        }
     }
-    
+    /**
+     * Prints the last recipient
+     * @param recipient the recipient object
+     */
     public static void printLast(RecipientDTO recipient){
        String lastRecipient = String.format("%s. %s, %s, %s, %s ",
                 recipient.getAwardID().toString(),
